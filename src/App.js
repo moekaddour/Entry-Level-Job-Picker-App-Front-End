@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import JobList from "./components/JobList";
+import "./App.css";
 
+async function fetchJobs(setJobs) {
+  const res = await fetch("http://localhost:5000/jobs");
+  const data = await res.json();
+  setJobs(data);
+}
 function App() {
+  const [jobs, setJobs] = useState([]);
+  useEffect(() => {
+    fetchJobs(setJobs);
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <JobList jobs={jobs} />
     </div>
   );
 }
