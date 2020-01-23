@@ -15,4 +15,5 @@ run npm start
 
 ## Note
 
-Make sure the back end server is running before ``` run npm start```
+Make sure the back end server is running before ```https://github.com/moekaddour/Entry-Level-Job-Picker-App-Back-End```
+``` run npm start```
